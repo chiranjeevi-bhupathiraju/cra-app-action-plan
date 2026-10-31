@@ -54,6 +54,24 @@ const App = () => {
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-100 via-white to-orange-50 px-4 py-10 font-sans antialiased transition-colors dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
+      <button
+        type="button"
+        onClick={() => setIsDark((current) => !current)}
+        className="fixed right-4 top-4 z-[60] flex h-11 w-11 items-center justify-center rounded-xl border border-white/70 bg-white/90 text-slate-700 shadow-lg backdrop-blur transition hover:bg-white focus:outline-none focus:ring-2 focus:ring-orange-400 dark:border-slate-700 dark:bg-slate-800/95 dark:text-amber-300 dark:hover:bg-slate-700"
+        aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
+        title={`Switch to ${isDark ? "light" : "dark"} theme`}
+      >
+        {isDark ? (
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
+            <circle cx="12" cy="12" r="4" />
+            <path strokeLinecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
+          </svg>
+        ) : (
+          <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
+            <path strokeLinecap="round" strokeLinejoin="round" d="M20.4 15.2A8.5 8.5 0 0 1 8.8 3.6 8.5 8.5 0 1 0 20.4 15.2Z" />
+          </svg>
+        )}
+      </button>
       <main className="mx-auto max-w-4xl">
         <section className="overflow-hidden rounded-3xl border border-slate-200 bg-white/80 shadow-2xl shadow-slate-200/60 backdrop-blur dark:border-slate-700 dark:bg-slate-900/80 dark:shadow-black/30">
           <header className="border-b border-slate-200 bg-gradient-to-r from-orange-500 to-amber-400 px-6 py-8 text-white sm:px-10">
@@ -69,26 +87,8 @@ const App = () => {
                   Organize your actions and stay focused.
                 </p>
               </div>
-              <div className="flex items-center gap-3 self-end sm:self-auto">
-                <button
-                  type="button"
-                  onClick={() => setIsDark((current) => !current)}
-                  className="flex h-11 w-11 items-center justify-center rounded-xl bg-white/20 text-white shadow-inner backdrop-blur transition hover:bg-white/30 focus:outline-none focus:ring-2 focus:ring-white/80"
-                  aria-label={`Switch to ${isDark ? "light" : "dark"} theme`}
-                  title={`Switch to ${isDark ? "light" : "dark"} theme`}
-                >
-                  {isDark ? (
-                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
-                      <circle cx="12" cy="12" r="4" />
-                      <path strokeLinecap="round" d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42" />
-                    </svg>
-                  ) : (
-                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" className="h-5 w-5">
-                      <path strokeLinecap="round" strokeLinejoin="round" d="M20.4 15.2A8.5 8.5 0 0 1 8.8 3.6 8.5 8.5 0 1 0 20.4 15.2Z" />
-                    </svg>
-                  )}
-                </button>
-                <div className="flex h-20 w-20 flex-col items-center justify-center rounded-2xl bg-white/20 shadow-inner backdrop-blur">
+              <div className="flex h-20 w-20 items-center justify-center self-end rounded-2xl bg-white/20 shadow-inner backdrop-blur sm:self-auto">
+                <div className="flex flex-col items-center">
                   <span className="text-2xl font-bold">{actions.length}</span>
                   <span className="text-xs text-orange-50">
                     {actions.length === 1 ? "Action" : "Actions"}
